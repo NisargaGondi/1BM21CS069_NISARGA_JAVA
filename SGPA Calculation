@@ -1,0 +1,163 @@
+import java.util.Scanner;
+
+/*class Subject 
+{
+	int subjectMarks;
+	int credits;
+	int grade;
+
+	/*Subject(int i)
+	{
+		System.out.println("Subject class constructor "+i);
+	}
+}*/
+
+class Student 
+{
+	//INSTANCE VARIABLES SECTION//
+	//Subject subject[]= new Subject[10];
+	double subjectMarks[]= new double[10];
+	double credits[]= new double[10];
+	double grade[]=new double[10];
+
+	String name;
+	String usn;
+	double SGPA;
+	//------------------------//
+
+	//INITIALIZATION SECTION//
+/*	Student() 
+	{
+		int i;
+		subject = new Subject[9];
+		for(i=0;i<9;i++)
+		{
+			subject[i] = new Subject(i);
+			subject[i].subjectMarks = 4;//for testing
+		}
+		//System.out.println("Constructor");//for testing
+	}*/
+	void getStudentDetails() 
+	{
+		Scanner s = new Scanner(System.in);
+		//subject = new Subject[9];
+		System.out.print("Enter your Name: ");
+		name = s.next();
+		System.out.print("Enter your USN: ");
+		usn = s.next();
+	}
+	//------------------------//
+	
+  /*	void test()//for testing
+	{
+		System.out.println(subject[0].subjectMarks);//for testing
+	}*/
+	
+	//INPUT SECTION//
+	double getMarks() 
+
+	{
+		Scanner s = new Scanner(System.in); 
+		int i;
+		
+		double effectiveScore=0;
+		double totalCredits = 0;
+		double SGPA;
+		
+		for(i=1;i<=3;i++) 
+		{
+			System.out.print("Enter marks for subject "+(i)+" : ");
+			subjectMarks[i] = s.nextInt();
+			System.out.print("Enter credits for subject "+(i)+" : ");
+			credits[i] = s.nextInt();
+
+			 
+		
+if((subjectMarks[i]<=100)&&(subjectMarks[i]>=90))
+{
+grade[i] =10;
+}
+
+else if((subjectMarks[i]>=80)&&(subjectMarks[i]<90))
+{
+grade[i] =9;
+}
+
+else if((subjectMarks[i]>=70)&&(subjectMarks[i]<80))
+{
+grade[i] =8;
+}
+
+else if((subjectMarks[i]>=60)&&(subjectMarks[i]<70))
+{
+grade[i] = 7;
+}
+
+else if((subjectMarks[i]>=55)&&(subjectMarks[i]<60))
+{
+grade[i] = 6;
+}
+
+else if((subjectMarks[i]>=50)&&(subjectMarks[i]<55))
+{
+grade[i] = 5;
+}
+
+else if((subjectMarks[i]>=40)&&(subjectMarks[i]<50))
+{
+grade[i] = 4;
+}
+
+else
+{
+grade[i] =0;
+}
+			effectiveScore = effectiveScore + (grade[i]*credits[i]);
+			totalCredits = totalCredits + credits[i];
+		}
+		SGPA = effectiveScore/totalCredits;
+		return SGPA;
+	
+	}   
+	//--------------------------//
+
+	/*double getSGPA()
+	{
+		int effectiveScore = 0;
+		int totalCredits = 0;
+		int i;
+		double SGPA;
+		for(i=0;i<3;i++)
+		{
+			effectiveScore = effectiveScore + (grade[i]*credits[i]);
+			totalCredits = totalCredits + credits[i];
+		}
+		SGPA = effectiveScore/totalCredits;
+		return SGPA;
+	}*/
+	
+}
+
+class Main
+{
+	public static void main(String args[])
+	{
+		Student s1 = new Student();
+		int i,n;
+		double value;
+		Scanner s = new Scanner(System.in);
+	
+		System.out.print("Enter number of students: ");
+		n = s.nextInt();
+		for(i=0;i<n;i++)
+		{
+		s1.getStudentDetails();
+		//s1.test();//for testing
+		value=s1.getMarks();
+		System.out.println("Name: "+s1.name);
+		System.out.println("USN: "+s1.usn);
+		System.out.println("SGPA: "+value);
+	    }
+	    
+	}
+}
